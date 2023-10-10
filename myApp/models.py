@@ -15,6 +15,13 @@ class Book (models.Model):
 
     opinion = models.CharField(max_length=20, choices=OPINION_CHOICES, null=True)
 
+    READ_BOOK = (
+        ("Tak", "Tak"),
+        ("Nie", "Nie")
+    )
+
+    read_book = models.CharField(max_length=3, choices=READ_BOOK, null=True)
+
     def __str__(self):
         return self.title
     

@@ -6,4 +6,5 @@ urlpatterns = [
     path("", views.test_book),
     path('second', Second.as_view()),
     path('third', views.testTempate),
+    path('dynamic', views.testDynamic)
 ]

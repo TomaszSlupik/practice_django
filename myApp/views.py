@@ -36,3 +36,8 @@ class Second(View):
         
 def testTempate (request):
     return render (request, 'myApp.html')
+
+
+def testDynamic (request):
+    allBook = Book.objects.all()
+    return render(request, 'dynamic.html', {'book': allBook})

@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from django.views import View
 from .models import Book
 from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import BookSerializer
+from rest_framework.authentication import TokenAuthentication
+
 # Create your views here.
 def test_book (request):
     return HttpResponse ('<h1> Tutaj będą książki </h1>')
@@ -41,3 +45,9 @@ def testTempate (request):
 def testDynamic (request):
     allBook = Book.objects.all()
     return render(request, 'dynamic.html', {'book': allBook})
+
+# serializer 
+class BookViewSet (viewsets.ModelViewSet):
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
+    authentication_classes = (TokenAuthentication, )
